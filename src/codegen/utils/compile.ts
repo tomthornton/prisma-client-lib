@@ -57,9 +57,11 @@ function compile(fileNames: string[], options: ts.CompilerOptions): number {
 }
 
 export async function testTSCompilation(datamodel) {
+  //@ts-ignore
   const schema = buildSchema(generateCRUDSchemaString(datamodel, DatabaseType.postgres))
   const generator = new TestTypescriptGenerator({
     schema,
+    //@ts-ignore
     internalTypes: parseInternalTypes(datamodel, DatabaseType.postgres).types,
   })
 
@@ -89,9 +91,11 @@ export async function testTSCompilation(datamodel) {
 }
 
 export async function testFlowCompilation(datamodel) {
+  //@ts-ignore
   const schema = buildSchema(generateCRUDSchemaString(datamodel, DatabaseType.postgres))
   const generator = new FlowGenerator({
     schema,
+    //@ts-ignore
     internalTypes: parseInternalTypes(datamodel, DatabaseType.postgres).types,
   })
 

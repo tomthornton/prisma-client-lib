@@ -14,9 +14,11 @@ const datamodel = fs.readFileSync(
   'utf-8',
 )
 test('typescript definitions generator', t => {
+  //@ts-ignore
   const schema = buildSchema(generateCRUDSchemaString(datamodel, DatabaseType.postgres))
   const generator = new TypescriptDefinitionsGenerator({
     schema,
+    //@ts-ignore
     internalTypes: parseInternalTypes(datamodel, DatabaseType.postgres).types,
   })
   const result = generator.render()

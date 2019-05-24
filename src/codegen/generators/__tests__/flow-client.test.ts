@@ -15,9 +15,11 @@ const datamodel = fs.readFileSync(
 )
 test('flow generator', t => {
   try {
+    //@ts-ignore
     const schema = buildSchema(generateCRUDSchemaString(datamodel, DatabaseType.postgres))
     const generator = new FlowGenerator({
       schema,
+      //@ts-ignore
       internalTypes: parseInternalTypes(datamodel, DatabaseType.postgres).types,
     })
     const result = generator.render()
@@ -28,9 +30,11 @@ test('flow generator', t => {
 })
 test('flow generator - print schema', t => {
   try {
+    //@ts-ignore
     const schema = buildSchema(generateCRUDSchemaString(datamodel, DatabaseType.postgres))
     const generator = new FlowGenerator({
       schema,
+      //@ts-ignore
       internalTypes: parseInternalTypes(datamodel, DatabaseType.postgres).types,
     })
     const result = generator.renderTypedefs()

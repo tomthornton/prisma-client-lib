@@ -19,9 +19,11 @@ type Address @embedded {
 `
 
 test.skip('typescript generator - embedded', t => {
+  //@ts-ignore
   const schema = buildSchema(generateCRUDSchemaString(datamodel, DatabaseType.postgres))
   const generator = new TypescriptGenerator({
     schema,
+    //@ts-ignore
     internalTypes: parseInternalTypes(datamodel, DatabaseType.postgres).types,
   })
   const result = generator.render()

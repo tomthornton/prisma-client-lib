@@ -15,18 +15,22 @@ const datamodel = fs.readFileSync(
 )
 
 test('typescript generator', t => {
+  //@ts-ignore
   const schema = buildSchema(generateCRUDSchemaString(datamodel, DatabaseType.postgres))
   const generator = new TypescriptGenerator({
     schema,
+    //@ts-ignore
     internalTypes: parseInternalTypes(datamodel, DatabaseType.postgres).types,
   })
   const result = generator.render()
   t.snapshot(result)
 })
 test('typescript generator definitions', t => {
+  //@ts-ignore
   const schema = buildSchema(generateCRUDSchemaString(datamodel, DatabaseType.postgres))
   const generator = new TypescriptGenerator({
     schema,
+    //@ts-ignore
     internalTypes: parseInternalTypes(datamodel, DatabaseType.postgres).types,
   })
   const result = generator.renderTypedefs()

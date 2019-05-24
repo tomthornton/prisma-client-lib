@@ -59,7 +59,7 @@ export class Client {
   _client: BatchedGraphQLClient
   _subscriptionClient: SubscriptionClient
   _schema: GraphQLSchema
-  _token: string
+  _token: any
   _currentInstructions: InstructionsMap = {}
   _models: Model[] = []
   _promises: InstructionPromiseMap = {}
@@ -77,7 +77,7 @@ export class Client {
 
     this.$graphql = this.buildGraphQL()
     this.$exists = this.buildExists()
-    this._token = token
+    this._token = undefined
     this._client = new BatchedGraphQLClient(endpoint, {
       headers: token
         ? {
